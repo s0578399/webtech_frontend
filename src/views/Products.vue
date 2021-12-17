@@ -7,7 +7,7 @@
             <h5 class="card-title">{{ product.productName }}</h5>
             <p class="card-text">{{ product.productDescription }}</p>
             <h6 class="card-price">{{ product.costs }}</h6>
-          </div>
+            </div>
         </div>
       </div>
     </div>
@@ -35,6 +35,7 @@ export default {
   },
   mounted () {
     const endpoint = process.env.VUE_APP_BACKEND_BASE_URL + '/api/v1/product'
+    console.log(endpoint)
     const requestOptions = {
       method: 'GET',
       redirect: 'follow'
@@ -46,6 +47,10 @@ export default {
         this.products.push(product)
       }))
       .catch(error => console.log('error', error))
+  },
+  beforeMount () {
+    const endpoint = process.env.VUE_APP_BACKEND_BASE_URL + '/api/v1/product'
+    console.log(endpoint)
   }
 }
 
