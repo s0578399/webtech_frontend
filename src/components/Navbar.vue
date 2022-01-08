@@ -11,6 +11,8 @@
           <router-link class="nav-link" to="/about">Über uns</router-link>
           <router-link class="nav-link" to="/products">Produkte</router-link>
           <router-link class="nav-link" to="/categories">Kategorien</router-link>
+          <router-link class="nav-link" to="/shoppingCart">Warenkorb</router-link>
+          <router-link class="nav-link" to="/test2">Test2</router-link>
 <!--          <a class="nav-link active" aria-current="page" href="#">Home</a>
           <a class="nav-link" href="#">About</a>
           <a class="nav-link" href="#">Produkte</a>
