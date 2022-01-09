@@ -31,7 +31,7 @@
           <h5 id="total">Warenkorb gesamt</h5>
           <div class="d-flex justify-content-between">
             <h6>Zwischensumme</h6>
-            <p>5€</p>
+            <p>{{ calculatePrice() }}€</p>
           </div>
           <div class="d-flex justify-content-between">
             <h6>Versand</h6>
@@ -40,9 +40,9 @@
           <hr class="second-hr">
           <div class="d-flex justify-content-between">
             <h6>Gesamt</h6>
-            <p>5€</p>
+            <p>{{ calculateTotal() }}€</p>
           </div>
-          <button @click="createOrder" type="submit" class="btn btn-success">Bestellung abschließen</button>
+          <router-link to="/orderDone"><button @click="createOrder" type="submit" class="btn btn-success">Bestellung abschließen</button></router-link>
         </div>
       </div>
     </div>
@@ -92,6 +92,20 @@ export default {
       }
       fetch(endpoint, requestOptions)
         .catch(error => console.log('error', error))
+    },
+    calculatePrice () {
+      let total = 0
+      this.$store.state.productsInShoppingCart.forEach(product => {
+        total += product.costs
+      })
+      return total
+    },
+    calculateTotal () {
+      let total = 0
+      this.$store.state.productsInShoppingCart.forEach(product => {
+        total += product.costs
+      })
+      return total + 10
     }
   }
 }
