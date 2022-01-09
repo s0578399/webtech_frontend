@@ -13,7 +13,7 @@
           <router-link to="/adminProductOverview"><button type="button" class="btn btn-success">Produkte bearbeiten</button></router-link>
         </div>
         <div class="container">
-          <router-link to="/home"><button type="button" class="btn btn-success">Bestellungen ansehen</button></router-link>
+          <router-link to="/orderOverview"><button type="button" class="btn btn-success">Bestellungen ansehen</button></router-link>
         </div>
       </div>
       </div>
