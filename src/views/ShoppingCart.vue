@@ -1,7 +1,7 @@
 <template>
   <section id="blog-home" class="pt-5 mt-5 container">
-    <h2>Einkaufswagen</h2>
-    <hr>
+    <h2>Warenkorb</h2>
+    <hr class="hr mx-auto">
   </section>
   <section id="cart-container" class="container my-5">
     <table width="100%">
@@ -102,6 +102,12 @@ export default {
 </script>
 
 <style scoped>
+.hr {
+  width: 300px;
+  height: 3px;
+  background-color: darkgreen;
+  position: center;
+}
 #cart-container {
   overflow-x: auto;
 }

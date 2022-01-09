@@ -1,6 +1,6 @@
 <template>
   <div class="home">
-    <img alt="Vue logo" src="../assets/logo.png">
+    <img src="../assets/ThePlantshop.png" height="500" width="500"/>
     <HelloWorld msg="Hello World!"/>
     <h1>{{ product.productName }} - {{ product.id }}</h1>
   </div>
