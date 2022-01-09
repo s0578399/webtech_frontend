@@ -9,6 +9,10 @@ import Test from '../views/test'
 import Test2 from '@/views/Test2'
 import OrderForm from '@/views/OrderForm'
 import OrderDone from '@/views/OrderDone'
+import Admin from '@/views/Admin'
+import AdminProductOverview from '@/views/AdminProductOverview'
+import CreateProduct from '@/views/CreateProduct'
+import EditProduct from '@/views/EditProduct'
 
 const routes = [
   {
@@ -61,6 +65,26 @@ const routes = [
     path: '/orderDone',
     name: 'OrderDone',
     component: OrderDone
+  },
+  {
+    path: '/admin',
+    name: 'Admin',
+    component: Admin
+  },
+  {
+    path: '/adminProductOverview',
+    name: 'AdminProductOverview',
+    component: AdminProductOverview
+  },
+  {
+    path: '/editProduct/:id',
+    name: 'EditProduct',
+    component: EditProduct
+  },
+  {
+    path: '/createProduct',
+    name: 'CreateProduct',
+    component: CreateProduct
   }
 ]
 
