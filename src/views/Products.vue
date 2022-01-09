@@ -6,14 +6,14 @@
       <p>Hier können Sie unsere Produkte sehen</p>
     </div>
     <div class="row mx-auto container-fluid">
-      <div v-for="product in products" :key="product.id" class="product text-center col-lg-3 col-md-12 ">
+      <div v-for="product in products" :key="product.id" class="product text-center col-lg-3 col-md-6 col-12">
         <router-link :to="{name: 'ProductSingleView', params: {id: product.id}}"><img class="img-fluid mb-3" :src="product.productUrl" height="1161" width="774"/></router-link>
         <h5 class="p-name">{{ product.productName }}</h5>
         <div class="description">
           <p>{{ product.productDescription }}</p>
         </div>
         <h4 class="p-price">{{ product.costs }}€</h4>
-        <button class="buy-btn">Jetzt kaufen</button>
+        <button @click="addItemToCart(product)" class="buy-btn">Zum Warenkorb hinzufügen</button>
       </div>
     </div>
   </section>
@@ -25,6 +25,12 @@ export default {
   data () {
     return {
       products: []
+    }
+  },
+  methods: {
+    addItemToCart (product) {
+      this.$store.commit('addProduct', product)
+      console.log(this.$store.state.productsInShoppingCart)
     }
   },
   computed: {
@@ -79,6 +85,7 @@ export default {
   opacity: 0;
   transition: 0.3s all;
   box-shadow: 2px 6px 4px silver;
+  border-radius: 20px;
 }
 
 .product:hover .buy-btn {
