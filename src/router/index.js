@@ -7,6 +7,8 @@ import ProductSingleView from '../views/ProductSingleView'
 import ShoppingCart from '@/views/ShoppingCart'
 import Test from '../views/test'
 import Test2 from '@/views/Test2'
+import OrderForm from '@/views/OrderForm'
+import OrderDone from '@/views/OrderDone'
 
 const routes = [
   {
@@ -46,9 +48,19 @@ const routes = [
     component: Test
   },
   {
-    path: '/test2',
+    path: '/test2/:id',
     name: 'Test2',
     component: Test2
+  },
+  {
+    path: '/orderForm',
+    name: 'OrderForm',
+    component: OrderForm
+  },
+  {
+    path: '/orderDone',
+    name: 'OrderDone',
+    component: OrderDone
   }
 ]
 
