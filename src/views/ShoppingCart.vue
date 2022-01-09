@@ -10,25 +10,21 @@
         <td>Entfernen</td>
         <td>Bild</td>
         <td>Produkt</td>
-        <td>Preis</td>
-        <td>Menge</td>
         <td>Gesamtpreis</td>
       </tr>
       </thead>
       <tbody>
       <tr v-for="product in cart" :key="product.id">
-        <td width="100%"><a href="#"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-trash-fill" viewBox="0 0 16 16">
+        <td v-on:click="removeItemFromCart(product)" width="100%"><a href="#"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-trash-fill" viewBox="0 0 16 16">
           <path d="M2.5 1a1 1 0 0 0-1 1v1a1 1 0 0 0 1 1H3v9a2 2 0 0 0 2 2h6a2 2 0 0 0 2-2V4h.5a1 1 0 0 0 1-1V2a1 1 0 0 0-1-1H10a1 1 0 0 0-1-1H7a1 1 0 0 0-1 1H2.5zm3 4a.5.5 0 0 1 .5.5v7a.5.5 0 0 1-1 0v-7a.5.5 0 0 1 .5-.5zM8 5a.5.5 0 0 1 .5.5v7a.5.5 0 0 1-1 0v-7A.5.5 0 0 1 8 5zm3 .5v7a.5.5 0 0 1-1 0v-7a.5.5 0 0 1 1 0z"/>
         </svg></a></td>
         <td width="100%"><img :src="product.productUrl" height="1161" width="774"/></td>
-        <td width="200%">
+        <td width="250%">
           <h5>
             {{ product.productName }}
           </h5>
         </td>
-        <td width="200%"><h5>{{ product.costs }}€</h5></td>
-        <td width="170%"><input class= "w-25 p1-1" type="number"></td>
-        <td width="170%"><h5>{{ product.costs }}€</h5></td>
+        <td width="100%"><h5>{{ product.costs }}€</h5></td>
       </tr>
       </tbody>
     </table>
@@ -40,26 +36,26 @@
           <h5>Gutschein</h5>
           <p>Gib deinen Gutschein-Code hier ein</p>
           <input type="test" placeholder="Gutschein Code">
-          <button v-on:click="checkCoupon">Gutschein einlösen</button>
+          <button id="b1" v-on:click="checkCoupon()" type="button" class="btn btn-success">Gutschein einlösen</button>
         </div>
       </div>
       <div class="total col-lg-6 col-md-6 col-12 mb-4">
         <div>
-          <h5>CART TOTAL</h5>
+          <h5>Gesamtpreis</h5>
           <div class="d-flex justify-content-between">
-            <h6>Subtotal</h6>
+            <h6>Zwischensumme</h6>
             <p>{{ calculatePrice() }}€</p>
           </div>
           <div class="d-flex justify-content-between">
-            <h6>Shipping</h6>
+            <h6>Versand</h6>
             <p>10€</p>
           </div>
           <hr class="second-hr">
           <div class="d-flex justify-content-between">
-            <h6>Total</h6>
+            <h6>Gesamt</h6>
             <p>{{ calculateTotal() }}€</p>
           </div>
-          <button class="m-auto">PROCEED TO CHECKOUT</button>
+          <router-link to="orderForm"><button id="b2" type="button" class="btn btn-success pb-2">Bestellung abschließen</button></router-link>
         </div>
       </div>
     </div>
@@ -91,6 +87,10 @@ export default {
         total += product.costs
       })
       return total + 10
+    },
+    removeItemFromCart (product) {
+      const i = this.$store.state.productsInShoppingCart.indexOf(product)
+      this.$store.commit('deleteProduct', product, i)
     }
   },
   computed: {
@@ -127,17 +127,15 @@ export default {
   text-align: center;
 }
 
-#cart-container table div>loop td:nth-child(1) {
-  width: 100px;
+#cart-container table div> td:nth-child(1) {
+  width: 2px;
 }
 #cart-container table div>loop td:nth-child(2),
 #cart-container table td:nth-child(3) {
   width: 200px;
 }
-#cart-container table div>loop td:nth-child(4),
-#cart-container table td:nth-child(5),
-#cart-container table td:nth-child(6) {
-  width: 170px;
+#cart-container table div>loop td:nth-child(4) {
+  width: 2px;
 }
 
 #cart-container table tbody img {
@@ -194,5 +192,34 @@ export default {
   margin: 0 12px 20px 0;
   display: flex;
   justify-content: flex-end;
+}
+.btn {
+  color: white;
+  background-color: darkgreen;
+  box-shadow: 3px 8px 6px silver;
+  border-radius: 20px;
+}
+.btn:hover {
+  transition-duration: 0.1s;
+  background-color: #3A3A3A;
+}
+.btn:active {
+  box-shadow: 0 3px 0 silver;
+  top: 3px;
+}
+#b2 {
+  position: relative;
+  margin-bottom: 10px;
+}
+#b1 {
+  position: relative;
+  top: 8px;
+}
+table {
+  table-layout: auto;
+  width: 150%;
+}
+td {
+  width: 100px;
 }
 </style>
