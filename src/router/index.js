@@ -13,6 +13,7 @@ import Admin from '@/views/Admin'
 import AdminProductOverview from '@/views/AdminProductOverview'
 import CreateProduct from '@/views/CreateProduct'
 import EditProduct from '@/views/EditProduct'
+import OrderOverview from '@/views/OrderOverview'
 
 const routes = [
   {
@@ -85,6 +86,11 @@ const routes = [
     path: '/createProduct',
     name: 'CreateProduct',
     component: CreateProduct
+  },
+  {
+    path: '/orderOverview',
+    name: 'OrderOverview',
+    component: OrderOverview
   }
 ]
 
